@@ -9,10 +9,23 @@
 #ifndef Core_hpp
 #define Core_hpp
 
+#include <vector>
+#include "Stringable.hpp"
+
 namespace INVIGILATION_CORE {
+    class Player;
+    class Card;
+    
     class Core{
     public:
         Core();
+        virtual ~Core();
+        void loadDeck();
+    private:
+        std::vector<std::unique_ptr<Player>> players;
+        std::vector<std::unique_ptr<Card>> pubDeck;
+    public:
+        virtual std::string toString();
     };
 }
 

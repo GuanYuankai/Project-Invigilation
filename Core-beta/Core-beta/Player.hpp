@@ -9,9 +9,24 @@
 #ifndef Player_hpp
 #define Player_hpp
 
+#include <vector>
+#include <string>
+#include "Stringable.hpp"
+
 namespace INVIGILATION_CORE {
-    class Player{
-        
+    class Card;
+    
+    class Player : public Stringable {
+    public:
+        Player();
+        virtual ~Player();
+    protected:
+        std::vector<std::unique_ptr<Card>> hand;
+        std::vector<std::unique_ptr<Card>> deck;
+    public:
+        std::vector<std::unique_ptr<Card>> loadDeck();
+        void takeCardIntoHand(std::unique_ptr<Card> card);
+        virtual std::string toString();
     };
 }
 
